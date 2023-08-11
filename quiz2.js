@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let score = 0;
     let currentQuestionIndex = 0;
     let quizData = [];
+    let correctAnswers = 0;
+    let wrongAnswers = 0;
 
     function loadQuizData() {
         fetch('quiz_questions.json')
@@ -20,13 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("currentQuestionIndex:", currentQuestionIndex);
 
         if (currentQuestionIndex >= quizData.length) {
-            alert('Quiz finished!');
+            let finalScore = score - Math.floor(wrongAnswers / 3);
+            alert(`Quiz finished!
+            Total Score: ${finalScore}
+            Total Correct Answers: ${correctAnswers}
+            Total Wrong Answers: ${wrongAnswers}
+            Note: Every 3 wrong answers deduct 1 from the score.`);
             return;
         }
+        
 
         let questionData = quizData[currentQuestionIndex];
         let questionText = document.getElementById('question-text');
-        questionText.textContent = questionData.question;
+        questionText.textContent = `Question ${currentQuestionIndex + 1}: ${questionData.question}`;
 
         let optionsDiv = document.getElementById('options');
         optionsDiv.innerHTML = '';
@@ -74,10 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
             score++;
+            correctAnswers++;
         } else {
             score = Math.max(score - 1/3, 0);
-            alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
-        }
+            wrongAnswers++;
+        }        
 
         document.getElementById('score').textContent = 'Score: ' + score;
 

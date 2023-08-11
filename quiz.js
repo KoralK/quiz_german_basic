@@ -1,97 +1,125 @@
-
 document.addEventListener('DOMContentLoaded', function() {
 
-let score = 0;
-let currentQuestionIndex = 0;
-let quizData = [];
+    let score = 0;
+    let currentQuestionIndex = 0;
+    let quizData = [];
 
-function loadQuizData() {
-    fetch('quiz_questions.json')
-        .then(response => response.json())
-        .then(data => {
-            quizData = data;
-            displayQuizQuestion();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
-
-function displayQuizQuestion() {
-    console.log("currentQuestionIndex:", currentQuestionIndex); // Add this line
-
-    if (currentQuestionIndex >= quizData.length) {
-        alert('Quiz finished!');
-        return;
+    function loadQuizData() {
+        fetch('quiz_questions.json')
+            .then(response => response.json())
+            .then(data => {
+                quizData = data;
+                displayQuizQuestion();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
 
-    // Rest of the code...
+    function displayQuizQuestion() {
+        console.log("currentQuestionIndex:", currentQuestionIndex);
 
-
-    let questionData = quizData[currentQuestionIndex];
-    let questionText = document.getElementById('question-text');
-    questionText.textContent = questionData.question;
-
-    let optionsDiv = document.getElementById('options');
-    optionsDiv.innerHTML = '';
-
-    questionData.options.forEach((option, index) => {
-        let checkBox = document.createElement('input');
-        checkBox.type = 'checkbox';
-        checkBox.id = 'option' + index;
-        checkBox.value = index;
-
-        let label = document.createElement('label');
-        label.htmlFor = 'option' + index;
-        label.appendChild(document.createTextNode(option));
-
-        optionsDiv.appendChild(checkBox);
-        optionsDiv.appendChild(label);
-        optionsDiv.appendChild(document.createElement('br'));
-    });
-}
-
-document.getElementById('check-answer').addEventListener('click', function() {
-    let questionData = quizData[currentQuestionIndex];
-    let selectedOptions = [];
-
-    questionData.options.forEach((option, index) => {
-        let checkBox = document.getElementById('option' + index);
-        if (checkBox.checked) {
-            selectedOptions.push(index);
+        if (currentQuestionIndex >= quizData.length) {
+            alert('Quiz finished!');
+            return;
         }
-    });
 
-    if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
-        score++;
-    } else {
-        score = Math.max(score - 1/3, 0);
-        alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
+        let questionData = quizData[currentQuestionIndex];
+        let questionText = document.getElementById('question-text');
+        questionText.textContent = questionData.question;
+
+        let optionsDiv = document.getElementById('options');
+        optionsDiv.innerHTML = '';
+
+        questionData.options.forEach((option, index) => {
+            let checkBox = document.createElement('input');
+            checkBox.type = 'checkbox';
+            checkBox.id = 'option' + index;
+            checkBox.value = index;
+
+            let label = document.createElement('label');
+            label.htmlFor = 'option' + index;
+            label.appendChild(document.createTextNode(option));
+
+            optionsDiv.appendChild(checkBox);
+            optionsDiv.appendChild(label);
+            optionsDiv.appendChild(document.createElement('br'));
+        });
     }
 
-    document.getElementById('score').textContent = 'Score: ' + score;
+    function hasAnswerSelected() {
+        let questionData = quizData[currentQuestionIndex];
+        let selectedOptions = [];
 
-    currentQuestionIndex++;
-    displayQuizQuestion();
-});
+        questionData.options.forEach((option, index) => {
+            let checkBox = document.getElementById('option' + index);
+            if (checkBox.checked) {
+                selectedOptions.push(index);
+            }
+        });
 
-document.getElementById('prev-question').addEventListener('click', function() {
-    if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        displayQuizQuestion();
-    } else {
-        alert('This is the first question');
+        return selectedOptions.length > 0;
     }
-});
 
-document.getElementById('next-question').addEventListener('click', function() {
-    if (currentQuestionIndex < quizData.length - 1) {
+    document.getElementById('check-answer').addEventListener('click', function() {
+        let questionData = quizData[currentQuestionIndex];
+        let selectedOptions = [];
+
+        questionData.options.forEach((option, index) => {
+            let checkBox = document.getElementById('option' + index);
+            if (checkBox.checked) {
+                selectedOptions.push(index);
+            }
+        });
+
+        if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
+            score++;
+        } else {
+            score = Math.max(score - 1/3, 0);
+            alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
+        }
+
+        document.getElementById('score').textContent = 'Score: ' + score;
+
         currentQuestionIndex++;
         displayQuizQuestion();
-    } else {
-        alert('This is the last question');
-    }
-});
+    });
 
-loadQuizData();
+    document.getElementById('next-question').addEventListener('click', function() {
+        if (!hasAnswerSelected()) {
+            alert('Please select an answer before moving to the next question.');
+            return;
+        }
+    
+        // Check the answer and update the score
+        let questionData = quizData[currentQuestionIndex];
+        let selectedOptions = [];
+    
+        questionData.options.forEach((option, index) => {
+            let checkBox = document.getElementById('option' + index);
+            if (checkBox.checked) {
+                selectedOptions.push(index);
+            }
+        });
+    
+        if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
+            score++;
+        } else {
+            score = Math.max(score - 1/3, 0);
+            alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
+        }
+    
+        document.getElementById('score').textContent = 'Score: ' + score;
+    
+        // Move to the next question
+        if (currentQuestionIndex < quizData.length - 1) {
+            currentQuestionIndex++;
+            displayQuizQuestion();
+        } else {
+            alert('This is the last question');
+        }
+    });
+    
+
+    loadQuizData();
 });

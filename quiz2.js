@@ -90,7 +90,28 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please select an answer before moving to the next question.');
             return;
         }
-
+    
+        // Check the answer and update the score
+        let questionData = quizData[currentQuestionIndex];
+        let selectedOptions = [];
+    
+        questionData.options.forEach((option, index) => {
+            let checkBox = document.getElementById('option' + index);
+            if (checkBox.checked) {
+                selectedOptions.push(index);
+            }
+        });
+    
+        if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
+            score++;
+        } else {
+            score = Math.max(score - 1/3, 0);
+            alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
+        }
+    
+        document.getElementById('score').textContent = 'Score: ' + score;
+    
+        // Move to the next question
         if (currentQuestionIndex < quizData.length - 1) {
             currentQuestionIndex++;
             displayQuizQuestion();
@@ -98,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('This is the last question');
         }
     });
+    
 
     loadQuizData();
 });

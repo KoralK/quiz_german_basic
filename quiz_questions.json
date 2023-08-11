@@ -1,138 +1,177 @@
 [
     {
-        "question": "What utility can you use on a Mac to gather system information for troubleshooting?",
-        "options": ["System Information", "Activity Monitor", "Console", "Disk Utility"],
+        "question": "What is the German word for 'Hello'?",
+        "options": ["Hallo", "Auf Wiedersehen", "Danke", "Ja"],
         "answers": [0]
     },
     {
-        "question": "Which macOS utility is used for partitioning a disk?",
-        "options": ["Network Utility", "Disk Utility", "Terminal", "Console"],
-        "answers": [1]
-    },
-    {
-        "question": "If an application is unresponsive on a Mac, what utility can be used to force it to quit?",
-        "options": ["Disk Utility", "Activity Monitor", "System Information", "Terminal"],
-        "answers": [1]
-    },
-    {
-        "question": "What does the command 'ping' do on a Mac?",
-        "options": ["It checks the network connectivity to another host on an IP network", "It displays active network connections", "It displays the routing table", "It displays network statistics"],
-        "answers": [0]
-    },
-    {
-        "question": "What key can you hold during startup to select a startup disk before booting?",
-        "options": ["Option", "Control", "Command", "Shift"],
-        "answers": [0]
-    },
-    {
-        "question": "Which version of macOS introduced the Apple File System (APFS)?",
-        "options": ["macOS Sierra", "macOS High Sierra", "macOS Mojave", "macOS Catalina"],
-        "answers": [1]
-    },
-    {
-        "question": "If a user's Mac is running slow, what are some steps they can try to fix it?",
-        "options": ["Check for software updates, close unnecessary apps, check storage space", "Restart the Mac, uninstall all apps, delete all files", "Turn off Wi-Fi, disconnect all peripherals, turn off the Mac for 24 hours", "Open all apps, download new files, check email"],
-        "answers": [0]
-    },
-    {
-        "question": "How can a user backup their Mac?",
-        "options": ["Using Time Machine", "Using Spotlight", "Using Finder", "Using Activity Monitor"],
-        "answers": [0]
-    },
-    {
-        "question": "What does 'Resetting the PRAM' do?",
-        "options": ["Deletes all files on the Mac", "Resets all settings on the Mac", "Resets certain system settings and variables", "Resets the Mac's password"],
+        "question": "How do you say 'Thank you' in German?",
+        "options": ["Bitte", "Nein", "Danke", "Tschüss"],
         "answers": [2]
     },
     {
-        "question": "What is the default browser on a Mac?",
-        "options": ["Chrome", "Safari", "Firefox", "Internet Explorer"],
-        "answers": [1]
-    },
-    {
-        "question": "What is the name of Apple's custom silicon for Macs?",
-        "options": ["A12Z Bionic", "Intel i9", "M1", "AMD Ryzen"],
-        "answers": [2]
-    },
-    {
-        "question": "What programming language did Apple create?",
-        "options": ["Swift", "Objective-C", "Java", "Kotlin"],
-        "answers": [0, 1]
-    },
-    {
-        "question": "How do you reset the System Management Controller (SMC) on a Mac laptop with a non-removable battery?",
-        "options": ["Hold Shift + Control + Option + Power button for 10 seconds", "Press Command + R during startup", "Press Option + Command + P + R for 20 seconds during startup", "Hold down the Power button for 5 seconds during startup"],
-        "answers": [0]
-    },
-    {
-        "question": "What key combination is used to start up your Mac in Safe Mode?",
-        "options": ["Command + R", "Shift", "Command + S", "Option"],
-        "answers": [1]
-    },
-    {
-        "question": "What does resetting the PRAM/NVRAM on your Mac do?",
-        "options": ["Resets user preferences", "Resets network settings", "Clears storage space", "Resets certain system settings"],
+        "question": "Which of these means 'Goodbye' in German?",
+        "options": ["Hallo", "Ja", "Nein", "Auf Wiedersehen"],
         "answers": [3]
     },
     {
-        "question": "What key combination is used to reset the PRAM/NVRAM on a Mac?",
-        "options": ["Option + Command + P + R", "Shift + Control + Option + Power button", "Command + S", "Command + R"],
+        "question": "How do you ask 'How are you?' in German?",
+        "options": ["Wie geht es dir?", "Ich bin gut", "Guten Morgen", "Gute Nacht"],
         "answers": [0]
     },
     {
-        "question": "What is the name of the built-in recovery system on a Mac?",
-        "options": ["Mac Recovery", "Recovery Mode", "Safe Mode", "System Restore"],
+        "question": "Which of these is the German word for 'Water'?",
+        "options": ["Wasser", "Brot", "Milch", "Apfel"],
+        "answers": [0]
+    },
+    {
+        "question": "How do you say 'Yes' in German?",
+        "options": ["Ja", "Nein", "Bitte", "Danke"],
+        "answers": [0]
+    },
+    {
+        "question": "What is the German word for 'No'?",
+        "options": ["Ja", "Nein", "Bitte", "Danke"],
         "answers": [1]
     },
     {
-        "question": "How do you start up your Mac in Apple Diagnostics or Apple Hardware Test?",
-        "options": ["Press D during startup", "Press Command + R during startup", "Press Shift during startup", "Press Option + Command + P + R during startup"],
-        "answers": [0]
-    },
-    {
-        "question": "What utility does Apple provide for troubleshooting your wireless connection?",
-        "options": ["Network Utility", "Wireless Diagnostics", "AirPort Utility", "NetSpot"],
+        "question": "Which of these means 'Good morning' in German?",
+        "options": ["Guten Abend", "Guten Morgen", "Gute Nacht", "Hallo"],
         "answers": [1]
     },
     {
-        "question": "How do you boot your Mac from a USB drive?",
-        "options": ["Press Option during startup", "Press Command + R during startup", "Press D during startup", "Press Shift during startup"],
-        "answers": [0]
-    },
-    {
-        "question": "How do you access the Terminal from Recovery Mode on a Mac?",
-        "options": ["Click on Utilities > Terminal", "Press Command + T", "Press Command + Space, then type Terminal", "Right-click on the desktop and select New Terminal"],
-        "answers": [0]
-    },
-    {
-        "question": "What is the name of the app that helps you find files, apps, and other info on your Mac?",
-        "options": ["Siri", "Spotlight", "Finder", "Searchlight"],
-        "answers": [1]
-    },
-    {
-        "question": "Which of the following is a desktop computer produced by Apple?",
-        "options": ["iMac", "Dell Inspiron", "HP Pavilion", "Lenovo IdeaCentre"],
-        "answers": [0]
-    },
-    {
-        "question": "What type of product is Apple's Magic Mouse?",
-        "options": ["Keyboard", "Screen", "Mouse", "Headset"],
+        "question": "How do you say 'Good night' in German?",
+        "options": ["Guten Abend", "Guten Morgen", "Gute Nacht", "Hallo"],
         "answers": [2]
     },
     {
-        "question": "Which of these are potential indications that a Mac may be infected with malware?",
-        "options": ["Increased CPU usage", "Unexpected pop-up ads", "Informattions like weather popup", "None of the above"],
-        "answers": [0,1]
-    },
-    {
-        "question": "Which built-in macOS app allows you to view and control the processes running on your Mac?",
-        "options": ["Console", "Activity Monitor", "System Preferences", "Terminal"],
+        "question": "Which of these is the German word for 'Bread'?",
+        "options": ["Wasser", "Brot", "Milch", "Apfel"],
         "answers": [1]
     },
     {
-        "question": "Which macOS tool would you use to gather information about system activity, including details about CPU usage, memory usage, network activity, and more?",
-        "options": ["Activity Monitor", "Disk Utility", "System Information", "Console"],
+        "question": "How do you say 'Apple' in German?",
+        "options": ["Wasser", "Brot", "Milch", "Apfel"],
+        "answers": [3]
+    },
+    {
+        "question": "Which of these means 'Milk' in German?",
+        "options": ["Wasser", "Brot", "Milch", "Apfel"],
+        "answers": [2]
+    },
+    {
+        "question": "How do you ask 'What is your name?' in German?",
+        "options": ["Wie geht es dir?", "Wie heißt du?", "Ich bin gut", "Guten Morgen"],
+        "answers": [1]
+    },
+    {
+        "question": "Which of these means 'Good evening' in German?",
+        "options": ["Guten Abend", "Guten Morgen", "Gute Nacht", "Hallo"],
         "answers": [0]
+    },
+    {
+        "question": "How do you say 'Please' in German?",
+        "options": ["Ja", "Nein", "Bitte", "Danke"],
+        "answers": [2]
+    },
+    {
+        "question": "Which of these is the German word for 'Man'?",
+        "options": ["Mann", "Frau", "Kind", "Hund"],
+        "answers": [0]
+    },
+    {
+        "question": "How do you say 'Woman' in German?",
+        "options": ["Mann", "Frau", "Kind", "Hund"],
+        "answers": [1]
+    },
+    {
+        "question": "Which of these means 'Child' in German?",
+        "options": ["Mann", "Frau", "Kind", "Hund"],
+        "answers": [2]
+    },
+    {
+        "question": "How do you say 'Dog' in German?",
+        "options": ["Mann", "Frau", "Kind", "Hund"],
+        "answers": [3]
+    },
+    {
+        "question": "Which of these is the German word for 'House'?",
+        "options": ["Haus", "Auto", "Straße", "Buch"],
+        "answers": [0]
+    },
+    {
+        "question": "How do you say 'Car' in German?",
+        "options": ["Haus", "Auto", "Straße", "Buch"],
+        "answers": [1]
+    },
+    {
+        "question": "Which of these means 'Street' in German?",
+        "options": ["Haus", "Auto", "Straße", "Buch"],
+        "answers": [2]
+    },
+    {
+        "question": "How do you say 'Book' in German?",
+        "options": ["Haus", "Auto", "Straße", "Buch"],
+        "answers": [3]
+    },
+    {
+        "question": "Which of these is the German word for 'Friend'?",
+        "options": ["Freund", "Feind", "Vater", "Mutter"],
+        "answers": [0]
+    },
+    {
+        "question": "How do you say 'Enemy' in German?",
+        "options": ["Freund", "Feind", "Vater", "Mutter"],
+        "answers": [1]
+    },
+    {
+        "question": "Which of these means 'Father' in German?",
+        "options": ["Freund", "Feind", "Vater", "Mutter"],
+        "answers": [2]
+    },
+    {
+        "question": "How do you say 'Mother' in German?",
+        "options": ["Freund", "Feind", "Vater", "Mutter"],
+        "answers": [3]
+    },
+    {
+        "question": "Which of these is the German word for 'Boy'?",
+        "options": ["Junge", "Mädchen", "Oma", "Opa"],
+        "answers": [0]
+    },
+    {
+        "question": "How do you say 'Girl' in German?",
+        "options": ["Junge", "Mädchen", "Oma", "Opa"],
+        "answers": [1]
+    },
+    {
+        "question": "Which of these means 'Grandmother' in German?",
+        "options": ["Junge", "Mädchen", "Oma", "Opa"],
+        "answers": [2]
+    },
+    {
+        "question": "How do you say 'Grandfather' in German?",
+        "options": ["Junge", "Mädchen", "Oma", "Opa"],
+        "answers": [3]
+    },
+    {
+        "question": "Which of these is the German word for 'Eat'?",
+        "options": ["Essen", "Trinken", "Laufen", "Schlafen"],
+        "answers": [0]
+    },
+    {
+        "question": "How do you say 'Drink' in German?",
+        "options": ["Essen", "Trinken", "Laufen", "Schlafen"],
+        "answers": [1]
+    },
+    {
+        "question": "Which of these means 'Run' in German?",
+        "options": ["Essen", "Trinken", "Laufen", "Schlafen"],
+        "answers": [2]
+    },
+    {
+        "question": "How do you say 'Sleep' in German?",
+        "options": ["Essen", "Trinken", "Laufen", "Schlafen"],
+        "answers": [3]
     }
 ]
-    

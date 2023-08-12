@@ -135,32 +135,13 @@ document.addEventListener('DOMContentLoaded', function() {
     */
 
     document.getElementById('display-score').addEventListener('click', function() {
-        // Check the answer first
-        let questionData = quizData[currentQuestionIndex];
-        let selectedOptions = [];
-
-        questionData.options.forEach((option, index) => {
-            let checkBox = document.getElementById('option' + index);
-            if (checkBox.checked) {
-                selectedOptions.push(index);
-            }
-        });
-
-        if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
-            score++;
-            correctAnswers++;
-        } else {
-            score = Math.max(score - 1/3, 0);
-            wrongAnswers++;
-        }
-
-        // Now display the score
+        // Just display the score without checking the current question's answer
         let finalScore = score - Math.floor(wrongAnswers / 3);
         alert(`Current Score: ${finalScore}
         Total Correct Answers: ${correctAnswers}
         Total Wrong Answers: ${wrongAnswers}
         Note: Every 3 wrong answers deduct 1 from the score.`);
-    });
+    });    
         
 
     loadQuizData();

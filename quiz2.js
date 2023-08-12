@@ -23,11 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (currentQuestionIndex >= quizData.length) {
             let finalScore = score - Math.floor(wrongAnswers / 3);
+            console.log("Before alert");
             alert(`Quiz finished!
             Total Score: ${finalScore}
             Total Correct Answers: ${correctAnswers}
             Total Wrong Answers: ${wrongAnswers}
             Note: Every 3 wrong answers deduct 1 from the score.`);
+            console.log("After alert");
             return;
         }
         

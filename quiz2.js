@@ -135,13 +135,30 @@ document.addEventListener('DOMContentLoaded', function() {
     */
 
     document.getElementById('display-score').addEventListener('click', function() {
-        // Just display the score without checking the current question's answer
-        let finalScore = score - Math.floor(wrongAnswers / 3);
+        let questionData = quizData[currentQuestionIndex];
+        let selectedOptions = [];
+    
+        questionData.options.forEach((option, index) => {
+            let checkBox = document.getElementById('option' + index);
+            if (checkBox.checked) {
+                selectedOptions.push(index);
+            }
+        });
+    
+        // Check if the selected answer is correct or not
+        if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
+            correctAnswers++;
+        } else if (selectedOptions.length > 0) { // Only increment wrongAnswers if an answer was selected
+            wrongAnswers++;
+        }
+    
+        let finalScore = score + correctAnswers - Math.floor(wrongAnswers / 3); // Adjusted score calculation
         alert(`Current Score: ${finalScore}
         Total Correct Answers: ${correctAnswers}
         Total Wrong Answers: ${wrongAnswers}
         Note: Every 3 wrong answers deduct 1 from the score.`);
-    });    
+    });
+        
         
 
     loadQuizData();

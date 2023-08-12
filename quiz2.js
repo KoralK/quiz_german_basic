@@ -123,14 +123,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('score').textContent = 'Score: ' + score;
     
         // Move to the next question
-        if (currentQuestionIndex < quizData.length - 1) {
+        if (currentQuestionIndex < quizData.length) {  // <-- Change this condition
             currentQuestionIndex++;
             displayQuizQuestion();
         } else {
             alert('This is the last question');
         }
     });
-    
+        
 
     loadQuizData();
 });

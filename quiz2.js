@@ -96,6 +96,14 @@ document.addEventListener('DOMContentLoaded', function() {
         displayQuizQuestion();
     });
 
+    document.getElementById('display-score').addEventListener('click', function() {
+        let finalScore = score - Math.floor(wrongAnswers / 3);
+        alert(`Current Score: ${finalScore}
+        Total Correct Answers: ${correctAnswers}
+        Total Wrong Answers: ${wrongAnswers}
+        Note: Every 3 wrong answers deduct 1 from the score.`);
+    });
+
     document.getElementById('next-question').addEventListener('click', function() {
         if (!hasAnswerSelected()) {
             alert('Please select an answer before moving to the next question.');
@@ -120,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
         }
     
-        document.getElementById('score').textContent = 'Score: ' + score;
+        //document.getElementById('score').textContent = 'Score: ' + score;
     
         // Move to the next question
         if (currentQuestionIndex < quizData.length) {  // <-- Change this condition

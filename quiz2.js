@@ -57,6 +57,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    document.getElementById('next-question').addEventListener('click', function() {
+
+        if (!hasAnswerSelected()) {
+            alert('Please select an answer before moving to the next question.');
+            return;
+        }
+        
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < quizData.length) {
+            displayQuizQuestion();
+        } else {
+            alert('This is the last question');
+            // Optionally, you can reset the quiz or navigate to a results page here.
+        }
+        
+    });
+    
+
     function hasAnswerSelected() {
         let questionData = quizData[currentQuestionIndex];
         let selectedOptions = [];

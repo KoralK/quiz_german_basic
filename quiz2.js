@@ -97,46 +97,31 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('display-score').addEventListener('click', function() {
-        let finalScore = score - Math.floor(wrongAnswers / 3);
-        alert(`Current Score: ${finalScore}
-        Total Correct Answers: ${correctAnswers}
-        Total Wrong Answers: ${wrongAnswers}
-        Note: Every 3 wrong answers deduct 1 from the score.`);
-    });
-
-    document.getElementById('next-question').addEventListener('click', function() {
-        if (!hasAnswerSelected()) {
-            alert('Please select an answer before moving to the next question.');
-            return;
-        }
-    
-        // Check the answer and update the score
+        // Check the answer first
         let questionData = quizData[currentQuestionIndex];
         let selectedOptions = [];
-    
+
         questionData.options.forEach((option, index) => {
             let checkBox = document.getElementById('option' + index);
             if (checkBox.checked) {
                 selectedOptions.push(index);
             }
         });
-    
+
         if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
             score++;
+            correctAnswers++;
         } else {
             score = Math.max(score - 1/3, 0);
-            alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
+            wrongAnswers++;
         }
-    
-        //document.getElementById('score').textContent = 'Score: ' + score;
-    
-        // Move to the next question
-        if (currentQuestionIndex < quizData.length) {  // <-- Change this condition
-            currentQuestionIndex++;
-            displayQuizQuestion();
-        } else {
-            alert('This is the last question');
-        }
+
+        // Now display the score
+        let finalScore = score - Math.floor(wrongAnswers / 3);
+        alert(`Current Score: ${finalScore}
+        Total Correct Answers: ${correctAnswers}
+        Total Wrong Answers: ${wrongAnswers}
+        Note: Every 3 wrong answers deduct 1 from the score.`);
     });
         
 

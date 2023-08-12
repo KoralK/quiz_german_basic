@@ -63,18 +63,36 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please select an answer before moving to the next question.');
             return;
         }
-        
+    
+        // Check the answer and update the score
+        let questionData = quizData[currentQuestionIndex];
+        let selectedOptions = [];
+    
+        questionData.options.forEach((option, index) => {
+            let checkBox = document.getElementById('option' + index);
+            if (checkBox.checked) {
+                selectedOptions.push(index);
+            }
+        });
+    
+        if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
+            score++;
+            correctAnswers++;
+        } else {
+            score = Math.max(score - 1/3, 0); // This logic deducts 1/3 from the score for a wrong answer
+            wrongAnswers++;
+        }
+    
         currentQuestionIndex++;
-
+    
         if (currentQuestionIndex < quizData.length) {
             displayQuizQuestion();
         } else {
             alert('This is the last question');
             // Optionally, you can reset the quiz or navigate to a results page here.
         }
-        
     });
-    
+        
 
     function hasAnswerSelected() {
         let questionData = quizData[currentQuestionIndex];

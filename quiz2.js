@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return selectedOptions.length > 0;
     }
 
-    document.getElementById('check-answer').addEventListener('click', function() {
+   /* document.getElementById('check-answer').addEventListener('click', function() {
         let questionData = quizData[currentQuestionIndex];
         let selectedOptions = [];
 
@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
         currentQuestionIndex++;
         displayQuizQuestion();
     });
+    */
 
     document.getElementById('display-score').addEventListener('click', function() {
         // Check the answer first

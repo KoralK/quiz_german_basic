@@ -64,26 +64,26 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('check-answer').addEventListener('click', function() {
         let questionData = quizData[currentQuestionIndex];
         let selectedOptions = [];
-
+    
         questionData.options.forEach((option, index) => {
             let checkBox = document.getElementById('option' + index);
             if (checkBox.checked) {
                 selectedOptions.push(index);
             }
         });
-
+    
         if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
             score++;
+            totalCorrect++;
         } else {
             score = Math.max(score - 1/3, 0);
             alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
         }
-
-        document.getElementById('score').textContent = 'Score: ' + score;
-
+    
+        updateScoreReport();
         currentQuestionIndex++;
         displayQuizQuestion();
-    });
+    });    
 
     document.getElementById('next-question').addEventListener('click', function() {
         if (!hasAnswerSelected()) {

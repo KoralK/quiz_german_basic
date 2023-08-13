@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentQuestionIndex = 0;
     let quizData = [];
     let totalCorrect = 0;
-
+    let totalWrong = 0;
 
     function loadQuizData() {
         fetch('quiz_questions.json')
@@ -58,6 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('This is the first question');
         }
     });
+
+    function updateScoreReport() {
+        let report = document.getElementById('score-report');
+        report.textContent = `Total Correct Answers: ${totalCorrect}, Total Wrong Answers: ${totalWrong}, Score: ${score}`;
+    }
+    
     
     function hasAnswerSelected() {
         let questionData = quizData[currentQuestionIndex];
@@ -90,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
             totalCorrect++;
         } else {
             score = Math.max(score - 1/3, 0);
+            totalWrong++; // Increment the totalWrong count
             alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
         }
     
@@ -122,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
         } else {
             score = Math.max(score - 1/3, 0);
+            totalWrong++; // Increment the totalWrong count
             alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
         }
     

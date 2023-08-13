@@ -20,34 +20,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayQuizQuestion() {
         console.log("currentQuestionIndex:", currentQuestionIndex);
-
+    
         if (currentQuestionIndex >= quizData.length) {
             alert('Quiz finished!');
             return;
         }
-
+    
         let questionData = quizData[currentQuestionIndex];
         let questionText = document.getElementById('question-text');
-        questionText.textContent = questionData.question;
-
+        
+        // Prepend the current question number to the question
+        questionText.textContent = (currentQuestionIndex + 1) + ". " + questionData.question;
+    
         let optionsDiv = document.getElementById('options');
         optionsDiv.innerHTML = '';
-
+    
         questionData.options.forEach((option, index) => {
             let checkBox = document.createElement('input');
             checkBox.type = 'checkbox';
             checkBox.id = 'option' + index;
             checkBox.value = index;
-
+    
             let label = document.createElement('label');
             label.htmlFor = 'option' + index;
             label.appendChild(document.createTextNode(option));
-
+    
             optionsDiv.appendChild(checkBox);
             optionsDiv.appendChild(label);
             optionsDiv.appendChild(document.createElement('br'));
         });
     }
+    
 
     document.getElementById('prev-question').addEventListener('click', function() {
         console.log("Previous Question clicked");

@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function updateScoreReport() {
-        let report = document.getElementById('score-report');
+        let report = document.getElementById('display-score');
         report.textContent = `Total Correct Answers: ${totalCorrect}, Total Wrong Answers: ${totalWrong}, Score: ${score}`;
     }
     

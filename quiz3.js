@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let score = 0;
     let currentQuestionIndex = 0;
     let quizData = [];
+    let totalCorrect = 0;
+
 
     function loadQuizData() {
         fetch('quiz_questions.json')
@@ -47,6 +49,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    document.getElementById('prev-question').addEventListener('click', function() {
+        console.log("Previous Question clicked");
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            displayQuizQuestion();
+        } else {
+            alert('This is the first question');
+        }
+    });
+    
     function hasAnswerSelected() {
         let questionData = quizData[currentQuestionIndex];
         let selectedOptions = [];
@@ -106,12 +118,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
             score++;
+            totalCorrect++; // Add this line here
+            
         } else {
             score = Math.max(score - 1/3, 0);
             alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
         }
     
-        document.getElementById('score').textContent = 'Score: ' + score;
+        document.getElementById('display-score').textContent = 'Score: ' + score;
     
         // Move to the next question
         if (currentQuestionIndex < quizData.length - 1) {

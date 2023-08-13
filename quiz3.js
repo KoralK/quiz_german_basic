@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Check Answer clicked");
         let questionData = quizData[currentQuestionIndex];
         let selectedOptions = [];
-    
+        
         questionData.options.forEach((option, index) => {
             let checkBox = document.getElementById('option' + index);
             if (checkBox.checked) {
@@ -94,19 +94,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     
+        // Check if any answer was selected
+        if (selectedOptions.length === 0) {
+            alert('Please select an answer before checking.');
+            return; // Exit from the event handler without doing anything further
+        }
+        
         if (JSON.stringify(selectedOptions) === JSON.stringify(questionData.answers)) {
             score++;
             totalCorrect++;
         } else {
             score = Math.max(score - 1/3, 0);
-            totalWrong++; // Increment the totalWrong count
+            totalWrong++; // Assuming you have initialized this variable at the beginning
             alert('Incorrect. The correct answer is: ' + questionData.answers.map(answerIndex => questionData.options[answerIndex]).join(', '));
         }
-    
+        
         updateScoreReport();
         currentQuestionIndex++;
         displayQuizQuestion();
-    });    
+    });
+        
 
     document.getElementById('next-question').addEventListener('click', function() {
         console.log("Next Question clicked");

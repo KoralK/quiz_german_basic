@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+    console.log("Page loaded and DOM is ready");
     let score = 0;
     let currentQuestionIndex = 0;
     let quizData = [];
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('check-answer').addEventListener('click', function() {
+        console.log("Check Answer clicked");
         let questionData = quizData[currentQuestionIndex];
         let selectedOptions = [];
     
@@ -86,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });    
 
     document.getElementById('next-question').addEventListener('click', function() {
+        console.log("Next Question clicked");
         if (!hasAnswerSelected()) {
             alert('Please select an answer before moving to the next question.');
             return;
